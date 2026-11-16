@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!-- তোমার সম্পূর্ণ ওয়েবসাইট — চাঁপাই ম্যাঙ্গো হাব -->
-<!-- লেসন ১ (HTML) + লেসন ২ (CSS) + লেসন ৩ (JavaScript) — তিনটা মিলে একটা আসল সাইট -->
+<!-- চাঁপাই ম্যাঙ্গো শপ — বড় ওয়েবসাইট (লেসন ১+২+৩ দিয়ে বানানো) -->
+<!-- ছবিগুলো images/ ফোল্ডারে আছে: hero-mangoes.jpg, orchard.jpg, mango-juice.jpg, raw-mangoes.jpg -->
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
@@ -9,46 +9,65 @@
   <style>
     * { box-sizing: border-box; }
     body { font-family: sans-serif; margin: 0; background: #fff8e1; color: #333; }
-    nav { background: #2e7d32; padding: 12px; text-align: center; position: sticky; top: 0; }
-    nav a { color: white; text-decoration: none; margin: 0 12px; font-weight: bold; }
+    nav { background: #2e7d32; padding: 12px; text-align: center; position: sticky; top: 0; z-index: 10; }
+    nav a { color: white; text-decoration: none; margin: 0 10px; font-weight: bold; }
     nav a:hover { text-decoration: underline; }
-    header { text-align: center; padding: 40px 20px; background: linear-gradient(#ffe082, #fff8e1); }
-    header h1 { color: #e65100; font-size: 44px; margin: 0; }
+    header { text-align: center; padding: 0 0 30px 0; background: linear-gradient(#ffe082, #fff8e1); }
+    header img.hero { width: 100%; max-height: 380px; object-fit: cover; display: block; }
+    header h1 { color: #e65100; font-size: 44px; margin: 20px 0 5px 0; }
     header p { font-size: 20px; color: #666; }
     .cta { background: #e65100; color: white; border: none; padding: 12px 24px; font-size: 18px; border-radius: 10px; cursor: pointer; }
     .cta:hover { background: #bf360c; }
-    section { max-width: 800px; margin: 0 auto; padding: 20px; }
-    h2 { color: #2e7d32; text-align: center; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    section { max-width: 900px; margin: 0 auto; padding: 20px; }
+    h2 { color: #2e7d32; text-align: center; font-size: 30px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; }
     .mango-card { background: white; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; }
     .mango-card h3 { margin: 5px 0; }
     .price { color: #2e7d32; font-weight: bold; font-size: 18px; }
-    .mango-card button { background: #2e7d32; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; margin-top: 8px; }
-    .mango-card button:hover { background: #1b5e20; }
+    .mango-card button, .pack-card button { background: #2e7d32; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; margin-top: 8px; }
+    .mango-card button:hover, .pack-card button:hover { background: #1b5e20; }
     .featured { border: 3px solid #e65100; }
+    .pack-card { background: #fff3e0; border: 2px dashed #e65100; border-radius: 12px; padding: 16px; text-align: center; }
+    .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; }
+    .gallery figure { margin: 0; }
+    .gallery figcaption { text-align: center; padding: 6px; color: #666; }
+    .why { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .why div { background: white; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .steps { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; text-align: center; }
+    .steps div { background: #e8f5e9; border-radius: 12px; padding: 16px; }
+    .steps .num { font-size: 34px; }
+    details { background: white; border-radius: 10px; padding: 12px 16px; margin: 8px 0; }
+    summary { font-weight: bold; cursor: pointer; }
     #cart { background: #e8f5e9; border-radius: 12px; padding: 16px; margin-top: 20px; font-size: 17px; }
     #cart ul { text-align: left; }
     input { padding: 10px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc; width: 60%; }
     footer { background: #2e7d32; color: white; text-align: center; padding: 20px; margin-top: 30px; }
+    @media (max-width: 600px) { .grid, .why, .steps, .gallery { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
   <nav>
     <a href="#home">হোম</a>
-    <a href="#varieties">আমের জাত</a>
-    <a href="#cart">ঝুড়ি</a>
+    <a href="#varieties">পাকা আম</a>
+    <a href="#packs">কম্বো প্যাক</a>
+    <a href="#raw">কাঁচা আম</a>
+    <a href="#gallery">গ্যালারি</a>
+    <a href="#delivery">ডেলিভারি</a>
     <a href="#contact">যোগাযোগ</a>
   </nav>
 
   <header id="home">
+    <img class="hero" src="images/hero-mangoes.jpg" alt="পাকা আমের ঝুড়ি">
     <h1>চাঁপাই ম্যাঙ্গো শপ 🥭</h1>
     <p>খাঁটি আম, সরাসরি চাঁপাইনবাবগঞ্জের বাগান থেকে</p>
     <a href="#varieties"><button class="cta">এখনই অর্ডার করো</button></a>
   </header>
 
+  <!-- ক্যাটাগরি ১: পাকা আম -->
   <section id="varieties">
-    <h2>🥭 আমাদের আমের জাত</h2>
+    <h2>🥭 পাকা আমের জাত</h2>
     <div class="grid">
       <div class="mango-card"><h3>ফজলি</h3><p>মিষ্টি আর রসালো</p><p class="price">৳৩০০/কেজি</p><button onclick="addToCart('ফজলি', 300)">অর্ডার করো</button></div>
       <div class="mango-card"><h3>হিমসাগর</h3><p>সবচেয়ে জনপ্রিয়</p><p class="price">৳৩৫০/কেজি</p><button onclick="addToCart('হিমসাগর', 350)">অর্ডার করো</button></div>
@@ -56,6 +75,9 @@
       <div class="mango-card"><h3>ল্যাংড়া</h3><p>ঘ্রাণে সেরা</p><p class="price">৳২৮০/কেজি</p><button onclick="addToCart('ল্যাংড়া', 280)">অর্ডার করো</button></div>
       <div class="mango-card"><h3>ব্যানানা</h3><p>লম্বা হলুদ আম</p><p class="price">৳২৫০/কেজি</p><button onclick="addToCart('ব্যানানা', 250)">অর্ডার করো</button></div>
       <div class="mango-card"><h3>কুমড়াজালি</h3><p>বড় আর মিষ্টি</p><p class="price">৳৩০০/কেজি</p><button onclick="addToCart('কুমড়াজালি', 300)">অর্ডার করো</button></div>
+      <div class="mango-card"><h3>আম্রপালি</h3><p>ছোট কিন্তু খুব মিষ্টি</p><p class="price">৳৩২০/কেজি</p><button onclick="addToCart('আম্রপালি', 320)">অর্ডার করো</button></div>
+      <div class="mango-card"><h3>গোপালভোগ</h3><p>আগাম জাতের আম</p><p class="price">৳৩০০/কেজি</p><button onclick="addToCart('গোপালভোগ', 300)">অর্ডার করো</button></div>
+      <div class="mango-card"><h3>খিরসাপাত</h3><p>ক্ষীরের মতো মিষ্টি</p><p class="price">৳৩৫০/কেজি</p><button onclick="addToCart('খিরসাপাত', 350)">অর্ডার করো</button></div>
     </div>
 
     <div class="mango-card featured" style="margin-top:15px">
@@ -64,6 +86,64 @@
       <p class="price">৳৮০০/পিস</p>
       <button onclick="addToCart('ব্রুনাই কিং', 800)">অর্ডার করো</button>
     </div>
+  </section>
+
+  <!-- ক্যাটাগরি ২: কম্বো প্যাক -->
+  <section id="packs">
+    <h2>🎁 কম্বো প্যাক</h2>
+    <div class="grid">
+      <div class="pack-card"><h3>ফ্যামিলি প্যাক</h3><p>৫ কেজি মিক্সড আম</p><p class="price">৳১৪০০</p><button onclick="addToCart('ফ্যামিলি প্যাক ৫ কেজি', 1400)">অর্ডার করো</button></div>
+      <div class="pack-card"><h3>গিফট বক্স</h3><p>৩ কেজি সেরা আম, সুন্দর বাক্সে</p><p class="price">৳১২০০</p><button onclick="addToCart('গিফট বক্স ৩ কেজি', 1200)">অর্ডার করো</button></div>
+      <div class="pack-card"><h3>টেস্টার প্যাক</h3><p>৩ জাতের আম, ৩ কেজি</p><p class="price">৳৯০০</p><button onclick="addToCart('টেস্টার প্যাক ৩ কেজি', 900)">অর্ডার করো</button></div>
+    </div>
+  </section>
+
+  <!-- ক্যাটাগরি ৩: কাঁচা আম -->
+  <section id="raw">
+    <h2>🥭 কাঁচা আম</h2>
+    <img src="images/raw-mangoes.jpg" alt="কাঁচা আম" style="width:100%; max-height:300px; object-fit:cover; border-radius:12px;">
+    <div class="grid" style="margin-top:15px">
+      <div class="mango-card"><h3>কাঁচা আম</h3><p>টক-ঝাল খাওয়ার জন্য</p><p class="price">৳১৫০/কেজি</p><button onclick="addToCart('কাঁচা আম', 150)">অর্ডার করো</button></div>
+      <div class="mango-card"><h3>আচারের আম</h3><p>আচার বানানোর জন্য</p><p class="price">৳১২০/কেজি</p><button onclick="addToCart('আচারের আম', 120)">অর্ডার করো</button></div>
+      <div class="mango-card"><h3>আমের জুস</h3><p>তাজা আমের জুস, ১ লিটার</p><p class="price">৳২৫০</p><button onclick="addToCart('আমের জুস ১ লিটার', 250)">অর্ডার করো</button></div>
+    </div>
+  </section>
+
+  <!-- গ্যালারি -->
+  <section id="gallery">
+    <h2>📸 আমাদের বাগান</h2>
+    <div class="gallery">
+      <figure><img src="images/orchard.jpg" alt="আম বাগান"><figcaption>আমাদের আম বাগান</figcaption></figure>
+      <figure><img src="images/hero-mangoes.jpg" alt="পাকা আমের ঝুড়ি"><figcaption>গাছপাকা আমের ঝুড়ি</figcaption></figure>
+      <figure><img src="images/mango-juice.jpg" alt="আমের জুস"><figcaption>তাজা আমের জুস</figcaption></figure>
+      <figure><img src="images/raw-mangoes.jpg" alt="কাঁচা আম"><figcaption>কাঁচা আম</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- কেন আমাদের আম -->
+  <section id="why">
+    <h2>💚 কেন আমাদের আম?</h2>
+    <div class="why">
+      <div><strong>🌳 গাছপাকা আম</strong><p>গাছে পাকিয়ে তারপর পাড়া হয় — ফরমালিনমুক্ত।</p></div>
+      <div><strong>🚚 সারা দেশে ডেলিভারি</strong><p>ঢাকাসহ সারা দেশে হোম ডেলিভারি।</p></div>
+      <div><strong>💵 ক্যাশ অন ডেলিভারি</strong><p>আম হাতে পেয়ে তারপর টাকা দাও।</p></div>
+      <div><strong>🔄 নষ্ট হলে বদলি</strong><p>কোনো আম নষ্ট থাকলে বদলে দেওয়া হবে।</p></div>
+    </div>
+  </section>
+
+  <!-- ডেলিভারি: অর্ডারের ধাপ -->
+  <section id="delivery">
+    <h2>📦 অর্ডার করবেন যেভাবে</h2>
+    <div class="steps">
+      <div><div class="num">1️⃣</div><strong>আম বাছো</strong><p>পছন্দের আমের "অর্ডার করো" চাপো</p></div>
+      <div><div class="num">2️⃣</div><strong>নাম লেখো</strong><p>ঝুড়িতে নাম লিখে অর্ডার সম্পন্ন করো</p></div>
+      <div><div class="num">3️⃣</div><strong>আম পৌঁছে যাবে</strong><p>২-৩ দিনে তোমার ঠিকানায় ডেলিভারি</p></div>
+    </div>
+
+    <h2 style="margin-top:30px">❓ সাধারণ প্রশ্ন</h2>
+    <details><summary>আম কি সত্যিই ফরমালিনমুক্ত?</summary><p>হ্যাঁ, আমাদের আম গাছে পাকানো হয়, কোনো কেমিক্যাল দেওয়া হয় না।</p></details>
+    <details><summary>ডেলিভারি চার্জ কত?</summary><p>ঢাকার ভেতরে ৳১০০, ঢাকার বাইরে ৳১৫০। ৫ কেজির বেশি অর্ডারে ডেলিভারি ফ্রি।</p></details>
+    <details><summary>আম নষ্ট হলে কী হবে?</summary><p>ছবি পাঠালেই নষ্ট আম বদলে দেওয়া হবে।</p></details>
 
     <div id="cart">
       <strong>🛒 তোমার ঝুড়ি</strong>
@@ -77,19 +157,18 @@
 
   <section id="contact">
     <h2>📞 যোগাযোগ</h2>
-    <p style="text-align:center">চাঁপাইনবাবগঞ্জ, বাংলাদেশ<br>ইউটিউব: চাঁপাই ম্যাঙ্গো হাব</p>
+    <p style="text-align:center">চাঁপাইনবাবগঞ্জ, বাংলাদেশ<br>ইউটিউব: চাঁপাই ম্যাঙ্গো হাব<br>ফেসবুক: চাঁপাই ম্যাঙ্গো হাব</p>
   </section>
 
   <footer>© ২০২৬ চাঁপাই ম্যাঙ্গো শপ — নিজের হাতে বানানো ওয়েবসাইট 🥭</footer>
 
   <script>
-    let items = [];   // ঝুড়ির তালিকা (array = অনেকগুলো জিনিসের তালিকা)
+    let items = [];   // ঝুড়ির তালিকা
     let total = 0;
 
     function addToCart(name, price) {
-      items.push(name + ' — ৳' + price);  // তালিকায় যোগ করা
+      items.push(name + ' — ৳' + price);
       total = total + price;
-      // তালিকাটা পেজে দেখানো
       let list = document.getElementById('cartList');
       list.innerHTML = '';
       for (let i = 0; i < items.length; i++) {
@@ -108,15 +187,17 @@
       }
       if (name === '') { name = 'বন্ধু'; }
       document.getElementById('orderMsg').textContent =
-        '✅ ধন্যবাদ, ' + name + '! তোমার ' + items.length + 'টা আমের অর্ডার পেয়েছি — মোট ৳' + total;
+        '✅ ধন্যবাদ, ' + name + '! তোমার ' + items.length + 'টা আইটেমের অর্ডার পেয়েছি — মোট ৳' + total;
     }
   </script>
 
   <!--
-    পরের ধাপের চ্যালেঞ্জ (নিজে চেষ্টা করো):
-    ১. দামগুলো নিজের আসল দামে বদলাও (এখনকার দামগুলো উদাহরণ)
-    ২. "আমাদের আমের জাত" সেকশনে নিজের ছবির জায়গা যোগ করো (img ট্যাগ)
-    ৩. নতুন একটা আমের কার্ড যোগ করো — লেসন ১-এর মতো করে
+    নতুন জিনিস যা শিখলে:
+    - <img src="images/..."> দিয়ে ছবি যোগ করা
+    - grid দিয়ে ৩ কলামে কার্ড সাজানো
+    - @media দিয়ে মোবাইলে ১ কলাম করা (responsive design)
+    - <details> দিয়ে প্রশ্ন-উত্তর (FAQ) বানানো
+    দামগুলো উদাহরণ — নিজের আসল দাম বসিয়ে নিও।
   -->
 </body>
 </html>
