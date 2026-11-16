@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!-- তোমার সম্পূর্ণ ওয়েবসাইট — চাঁপাই ম্যাঙ্গো হাব -->
+<!-- লেসন ১ (HTML) + লেসন ২ (CSS) + লেসন ৩ (JavaScript) — তিনটা মিলে একটা আসল সাইট -->
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>চাঁপাই ম্যাঙ্গো শপ 🥭 — খাঁটি আম, চাঁপাইনবাবগঞ্জ</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: sans-serif; margin: 0; background: #fff8e1; color: #333; }
+    nav { background: #2e7d32; padding: 12px; text-align: center; position: sticky; top: 0; }
+    nav a { color: white; text-decoration: none; margin: 0 12px; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+    header { text-align: center; padding: 40px 20px; background: linear-gradient(#ffe082, #fff8e1); }
+    header h1 { color: #e65100; font-size: 44px; margin: 0; }
+    header p { font-size: 20px; color: #666; }
+    .cta { background: #e65100; color: white; border: none; padding: 12px 24px; font-size: 18px; border-radius: 10px; cursor: pointer; }
+    .cta:hover { background: #bf360c; }
+    section { max-width: 800px; margin: 0 auto; padding: 20px; }
+    h2 { color: #2e7d32; text-align: center; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .mango-card { background: white; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; }
+    .mango-card h3 { margin: 5px 0; }
+    .price { color: #2e7d32; font-weight: bold; font-size: 18px; }
+    .mango-card button { background: #2e7d32; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; margin-top: 8px; }
+    .mango-card button:hover { background: #1b5e20; }
+    .featured { border: 3px solid #e65100; }
+    #cart { background: #e8f5e9; border-radius: 12px; padding: 16px; margin-top: 20px; font-size: 17px; }
+    #cart ul { text-align: left; }
+    input { padding: 10px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc; width: 60%; }
+    footer { background: #2e7d32; color: white; text-align: center; padding: 20px; margin-top: 30px; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#home">হোম</a>
+    <a href="#varieties">আমের জাত</a>
+    <a href="#cart">ঝুড়ি</a>
+    <a href="#contact">যোগাযোগ</a>
+  </nav>
+
+  <header id="home">
+    <h1>চাঁপাই ম্যাঙ্গো শপ 🥭</h1>
+    <p>খাঁটি আম, সরাসরি চাঁপাইনবাবগঞ্জের বাগান থেকে</p>
+    <a href="#varieties"><button class="cta">এখনই অর্ডার করো</button></a>
+  </header>
+
+  <section id="varieties">
+    <h2>🥭 আমাদের আমের জাত</h2>
+    <div class="grid">
+      <div class="mango-card"><h3>ফজলি</h3><p>মিষ্টি আর রসালো</p><p class="price">৳৩০০/কেজি</p><button onclick="addToCart('ফজলি', 300)">অর্ডার করো</button></div>
+      <div class="mango-card"><h3>হিমসাগর</h3><p>সবচেয়ে জনপ্রিয়</p><p class="price">৳৩৫০/কেজি</p><button onclick="addToCart('হিমসাগর', 350)">অর্ডার করো</button></div>
+      <div class="mango-card"><h3>কাটিমন</h3><p>সারা বছর পাওয়া যায়</p><p class="price">৳৩২০/কেজি</p><button onclick="addToCart('কাটিমন', 320)">অর্ডার করো</button></div>
+      <div class="mango-card"><h3>ল্যাংড়া</h3><p>ঘ্রাণে সেরা</p><p class="price">৳২৮০/কেজি</p><button onclick="addToCart('ল্যাংড়া', 280)">অর্ডার করো</button></div>
+      <div class="mango-card"><h3>ব্যানানা</h3><p>লম্বা হলুদ আম</p><p class="price">৳২৫০/কেজি</p><button onclick="addToCart('ব্যানানা', 250)">অর্ডার করো</button></div>
+      <div class="mango-card"><h3>কুমড়াজালি</h3><p>বড় আর মিষ্টি</p><p class="price">৳৩০০/কেজি</p><button onclick="addToCart('কুমড়াজালি', 300)">অর্ডার করো</button></div>
+    </div>
+
+    <div class="mango-card featured" style="margin-top:15px">
+      <h3>⭐ ব্রুনাই কিং — বিশেষ আম!</h3>
+      <p>একটা আমের ওজন ৩-৪ কেজি!</p>
+      <p class="price">৳৮০০/পিস</p>
+      <button onclick="addToCart('ব্রুনাই কিং', 800)">অর্ডার করো</button>
+    </div>
+
+    <div id="cart">
+      <strong>🛒 তোমার ঝুড়ি</strong>
+      <ul id="cartList"><li>এখনো কিছু যোগ হয়নি</li></ul>
+      <p>মোট: <strong id="totalText">৳০</strong></p>
+      <input id="buyerName" type="text" placeholder="তোমার নাম লেখো">
+      <button class="cta" onclick="placeOrder()">অর্ডার সম্পন্ন করো</button>
+      <p id="orderMsg"></p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>📞 যোগাযোগ</h2>
+    <p style="text-align:center">চাঁপাইনবাবগঞ্জ, বাংলাদেশ<br>ইউটিউব: চাঁপাই ম্যাঙ্গো হাব</p>
+  </section>
+
+  <footer>© ২০২৬ চাঁপাই ম্যাঙ্গো শপ — নিজের হাতে বানানো ওয়েবসাইট 🥭</footer>
+
+  <script>
+    let items = [];   // ঝুড়ির তালিকা (array = অনেকগুলো জিনিসের তালিকা)
+    let total = 0;
+
+    function addToCart(name, price) {
+      items.push(name + ' — ৳' + price);  // তালিকায় যোগ করা
+      total = total + price;
+      // তালিকাটা পেজে দেখানো
+      let list = document.getElementById('cartList');
+      list.innerHTML = '';
+      for (let i = 0; i < items.length; i++) {
+        let li = document.createElement('li');
+        li.textContent = items[i];
+        list.appendChild(li);
+      }
+      document.getElementById('totalText').textContent = '৳' + total;
+    }
+
+    function placeOrder() {
+      let name = document.getElementById('buyerName').value;
+      if (items.length === 0) {
+        document.getElementById('orderMsg').textContent = '⚠️ আগে ঝুড়িতে আম যোগ করো!';
+        return;
+      }
+      if (name === '') { name = 'বন্ধু'; }
+      document.getElementById('orderMsg').textContent =
+        '✅ ধন্যবাদ, ' + name + '! তোমার ' + items.length + 'টা আমের অর্ডার পেয়েছি — মোট ৳' + total;
+    }
+  </script>
+
+  <!--
+    পরের ধাপের চ্যালেঞ্জ (নিজে চেষ্টা করো):
+    ১. দামগুলো নিজের আসল দামে বদলাও (এখনকার দামগুলো উদাহরণ)
+    ২. "আমাদের আমের জাত" সেকশনে নিজের ছবির জায়গা যোগ করো (img ট্যাগ)
+    ৩. নতুন একটা আমের কার্ড যোগ করো — লেসন ১-এর মতো করে
+  -->
+</body>
+</html>
